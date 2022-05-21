@@ -1,0 +1,30 @@
+<div
+  class="amt-container"
+  [@transformTimepicker]="_panelAnimationState"
+  (@transformTimepicker.done)="_onAnimationDone($event)"
+>
+  <div class="amt-hours">
+    <div
+      matRipple
+      (click)="elementClicked('hour', _hour)"
+      class="amt-hour"
+      [ngClass]="{ 'amt-current': (_hour | hourFormat) == hour }"
+      *ngFor="let _hour of hours"
+      #tplHour
+    >
+      {{ _hour | hourFormat }}
+    </div>
+  </div>
+  <div class="amt-minutes">
+    <div
+      matRipple
+      (click)="elementClicked('minute', _minute)"
+      class="amt-minute"
+      [ngClass]="{ 'amt-current': (_minute | minuteFormat) == minute }"
+      *ngFor="let _minute of minutes"
+    >
+      {{ _minute | minuteFormat }}
+    </div>
+  </div>
+</div>
+<div class="amt-overlay" aria-hidden="true"></div>
