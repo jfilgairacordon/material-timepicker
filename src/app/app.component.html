@@ -1,13 +1,20 @@
-<input
-  style="position: fixed; top: 300px; left: 120px"
-  angularMaterialTimepicker
-/>
+<h1>Welcome to Angular Material Timepicker</h1>
+<div class="content">
+  <p>Raw input example:</p>
+  <div class="holder">
+    <input angularMaterialTimepicker />
+  </div>
+  <p style="margin-top: 24px">With material form fields</p>
+  <div class="holder">
+    <mat-form-field>
+      <input type="time" matInput angularMaterialTimepicker />
+    </mat-form-field>
+  </div>
 
-<mat-form-field>
-  <input type="time" matInput angularMaterialTimepicker />
-</mat-form-field>
-
-<div
-  angularMaterialTimepicker
-  style="width: 300px; height: 300px; background-color: red"
-></div>
+  <p style="margin-top: 24px">Initialized</p>
+  <div class="holder">
+    <mat-form-field>
+      <input value="05:06" type="time" matInput angularMaterialTimepicker />
+    </mat-form-field>
+  </div>
+</div>

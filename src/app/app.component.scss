@@ -1,0 +1,25 @@
+::ng-deep{
+    app-root{
+        display: flex;
+        align-content: center;
+        flex-direction: column;
+        background-color: rgb(223, 223, 223);
+        height: 100%;
+
+        h1{
+            margin-top: 12px!important;
+            text-align: center;
+        }
+
+        .content {
+            max-width: 700px;
+            margin: 0 auto;
+
+            .holder{
+                padding: 20px;
+                border: 1px solid rgb(172, 172, 172);
+                border-radius: 12px;
+            }
+        }
+    }
+}
