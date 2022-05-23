@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularMaterialTimepickerModule } from 'projects/angular-material-timepicker/src/public-api';
+import { AngularMaterialTimepickerModule } from 'projects/@jfilgaira/angular-material-timepicker/src/public-api';
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 

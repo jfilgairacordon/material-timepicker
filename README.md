@@ -25,5 +25,5 @@ or if you are using material:
 ## Installation
 
 ```
-npm i angularMaterialTimepicker -s
+npm i @jfilgaira/angular-material-timepicker
 ```

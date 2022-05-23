@@ -23,7 +23,6 @@
             "outputPath": "docs",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "baseHref": "/material-timepicker/",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
@@ -108,23 +107,23 @@
         }
       }
     },
-    "angular-material-timepicker": {
+    "@jfilgaira/angular-material-timepicker": {
       "projectType": "library",
-      "root": "projects/angular-material-timepicker",
-      "sourceRoot": "projects/angular-material-timepicker/src",
+      "root": "projects/@jfilgaira/angular-material-timepicker",
+      "sourceRoot": "projects/@jfilgaira/angular-material-timepicker/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/angular-material-timepicker/ng-package.json"
+            "project": "projects/@jfilgaira/angular-material-timepicker/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/angular-material-timepicker/tsconfig.lib.prod.json"
+              "tsConfig": "projects/@jfilgaira/angular-material-timepicker/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/angular-material-timepicker/tsconfig.lib.json"
+              "tsConfig": "projects/@jfilgaira/angular-material-timepicker/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -132,9 +131,9 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/angular-material-timepicker/src/test.ts",
-            "tsConfig": "projects/angular-material-timepicker/tsconfig.spec.json",
-            "karmaConfig": "projects/angular-material-timepicker/karma.conf.js"
+            "main": "projects/@jfilgaira/angular-material-timepicker/src/test.ts",
+            "tsConfig": "projects/@jfilgaira/angular-material-timepicker/tsconfig.spec.json",
+            "karmaConfig": "projects/@jfilgaira/angular-material-timepicker/karma.conf.js"
           }
         }
       }
