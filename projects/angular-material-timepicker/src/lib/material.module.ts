@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatRippleModule } from '@angular/material/core';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 
 @NgModule({
     declarations: [],
     imports: [
         CommonModule,
-        MatRippleModule
+        MatRippleModule,
+        OverlayModule
     ],
     exports: [
-        MatRippleModule
+        MatRippleModule,
+        OverlayModule
     ]
 })
 export class MaterialModule { }

@@ -1,7 +1,5 @@
-import { AnimationEvent } from '@angular/animations';
-import { FocusKeyManager } from '@angular/cdk/a11y';
-import { AfterViewInit, Component, EventEmitter, HostBinding, HostListener, Input, OnChanges, Output, SimpleChanges, ViewChild, ViewChildren } from '@angular/core';
-import { Subject } from 'rxjs';
+import { AfterViewInit, Component, OnChanges, SimpleChanges } from '@angular/core';
+import { take } from 'rxjs';
 import { AngularMaterialTimepickerBase } from './angular-material-timepicker-base';
 import { timepickerAnimations } from './angular-material-timepicker.animations';
 import { HourFormatPipe } from './pipes/hour-format.pipe';
@@ -30,6 +28,11 @@ export class AngularMaterialTimepickerComponent extends AngularMaterialTimepicke
         super();
         this.buildHours();
 
+        const _default = new Date();
+        const pipe = new HourFormatPipe();
+        this.hour = pipe.transform(_default.getHours());
+        this.minute = pipe.transform(_default.getMinutes());
+
         // We always have 60 minutes 😂;
         this.minutes = Array.from(Array(60).keys());
     }
@@ -41,13 +44,24 @@ export class AngularMaterialTimepickerComponent extends AngularMaterialTimepicke
          *
          * We do that because if the input field (which fires the component from the directive) has a valid time format (HH:MM) the component is pre-populated with that data. So on that point, if we have a value different of "00" on the hour / minute variable, the code below shows that to the user.
          */
-        const currentHourDiv = document.querySelector('.amt-hour.amt-current');
-        const currentMinuteDiv = document.querySelector('.amt-minute.amt-current');
-        if (currentHourDiv && currentMinuteDiv)
-        {
-            currentHourDiv.scrollIntoView()
-            currentMinuteDiv.scrollIntoView()
-        }
+        const currentHourDiv = document.querySelector<HTMLDivElement>('.amt-hour.amt-current');
+        const currentMinuteDiv = document.querySelector<HTMLDivElement>('.amt-minute.amt-current');
+        this._animationDone
+            .pipe(take(1))
+            .subscribe(() =>
+            {
+                if (currentHourDiv!.offsetTop > 0)
+                    currentHourDiv!.parentElement?.scrollTo({
+                        top: currentHourDiv!.offsetTop,
+                        behavior: "smooth"
+                    });
+
+                if (currentMinuteDiv!.offsetTop > 0)
+                    currentMinuteDiv!.parentElement?.scrollTo({
+                        top: currentMinuteDiv!.offsetTop,
+                        behavior: "smooth"
+                    })
+            });
     }
 
     ngOnChanges(changes: SimpleChanges): void

@@ -37,11 +37,10 @@ describe('AngularMaterialTimepickerComponent', () =>
         expect(component).toBeTruthy();
     });
 
-    it('should have class ".amt-overlay"', () =>
+    it('should have class .amt', () =>
     {
-        const compiled = fixture.nativeElement as HTMLElement;
-        const overlay = compiled.querySelector('.amt-overlay');
-        expect(overlay).toBeTruthy();
+        const found = document.querySelector('.amt');
+        expect(found).toBeTruthy();
     });
 
     it('should have a div with class "amt-hours"', () =>
@@ -181,15 +180,5 @@ describe('AngularMaterialTimepickerComponent', () =>
 
         fixture.detectChanges();
         expect(component.minuteClicked.emit).toHaveBeenCalledWith("09");
-    });
-
-    it("should emit close signal when .amt-overlay is clicked", () =>
-    {
-        spyOn(component.closeNotifier, 'emit');
-        const root = fixture.nativeElement as HTMLElement;
-        const overlay = root.querySelector('.amt-overlay') as HTMLElement;
-        overlay.click();
-        fixture.detectChanges();
-        expect(component.closeNotifier.emit).toHaveBeenCalled();
     });
 });

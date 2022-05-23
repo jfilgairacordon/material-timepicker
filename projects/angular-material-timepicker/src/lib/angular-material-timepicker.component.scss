@@ -1,58 +1,53 @@
 ::ng-deep{
-    .amt-overlay{
-        position: fixed;
-        top: 0px;
-        left: 0px;
-        right: 0px;
-        bottom: 0px;
-        height: 100%;
-        width: 100%;
-        z-index: 1000;
-        -webkit-tap-highlight-color: transparent;
-    }
-
-    .amt-container{
-        position: absolute;
-        display: grid;
+    angular-material-timepicker{
         height: 250px;
         width: 120px;
-        z-index: 1001;
 
-        box-shadow: 0 2px 4px -1px #0003, 0 4px 5px #00000024, 0 1px 10px #0000001f;
-        border-radius: 4px;
-        background-color: white;
-        // padding: 8px;
+        .amt-container{
+            display: grid;
+            height: 100%;
+            width: 100%;
 
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr;
-        gap: 0px;
-        overflow: hidden;
+            box-shadow: 0 2px 4px -1px #0003, 0 4px 5px #00000024, 0 1px 10px #0000001f;
+            border-radius: 4px;
+            background-color: white;
+            // padding: 8px;
 
-        ::-webkit-scrollbar{
-            display: none;
-        }
-        -ms-overflow-style: none; /* IE n EDGE */
-        scrollbar-width: none; /* FIREFOX */
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            gap: 0px;
+            overflow: hidden;
 
-        .amt-hours{
-            border-right: 1px solid rgba(0, 0, 0, 0.12);
-        }
-        .amt-hours, .amt-minutes{
-            overflow-y: scroll;
-            -webkit-overflow-scrolling: touch;
-
-            .amt-current{
-                background-color: rgba(0, 0, 0, 0.12);
+            ::-webkit-scrollbar{
+                display: none;
             }
+            -ms-overflow-style: none; /* IE n EDGE */
+            scrollbar-width: none; /* FIREFOX */
 
-            .amt-hour, .amt-minute{
-                display: flex;
-                height: 50px;
-                font-size: larger;
-                justify-content: center;
-                align-items: center;
-                cursor: pointer;
+            .amt-hours{
+                border-right: 1px solid rgba(0, 0, 0, 0.12);
+            }
+            .amt-hours, .amt-minutes{
+                overflow-y: scroll;
+                -webkit-overflow-scrolling: touch;
+
+                .amt-current{
+                    background-color: rgba(0, 0, 0, 0.12);
+                }
+
+                .amt-hour, .amt-minute{
+                    display: flex;
+                    height: 50px;
+                    font-size: larger;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                }
             }
         }
+    }
+
+    .amt-overlay{
+        background-color: transparent;
     }
 }

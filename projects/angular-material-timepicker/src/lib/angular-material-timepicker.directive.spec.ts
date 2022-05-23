@@ -1,3 +1,4 @@
+import { Overlay } from '@angular/cdk/overlay';
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -16,6 +17,8 @@ describe('AngularMaterialTimepickerDirective', () =>
     let fixture: ComponentFixture<TestAMTDirectiveComponent>;
     let inputEl: DebugElement;
 
+    let currentDate = new Date();
+
     beforeEach(async () =>
     {
         await TestBed.configureTestingModule({
@@ -26,7 +29,8 @@ describe('AngularMaterialTimepickerDirective', () =>
                 HourFormatPipe,
                 MinuteFormatPipe
             ],
-            imports: [NoopAnimationsModule]
+            imports: [NoopAnimationsModule],
+            providers: [Overlay]
         })
             .compileComponents();
     });
@@ -49,8 +53,18 @@ describe('AngularMaterialTimepickerDirective', () =>
         inputEl.triggerEventHandler('focus', {});
         fixture.detectChanges();
         const root = inputEl.nativeElement as HTMLElement;
-        const found = root.nextSibling;
+        const found = document.querySelector('.amt');
         expect(found?.nodeName).toBe("ANGULAR-MATERIAL-TIMEPICKER");
+    });
+
+    it('should set current hour if not initialized', () =>
+    {
+        const pipe = new HourFormatPipe();
+        const _curr = `${ pipe.transform(currentDate.getHours()) }:${ pipe.transform(currentDate.getMinutes()) }`
+        inputEl.triggerEventHandler('focus', {});
+        fixture.detectChanges();
+        const root = inputEl.nativeElement as HTMLInputElement;
+        expect(root.value).toBe(_curr);
     });
 
     it('should popup an instance of the timepicker prepopulated with 01:01', () =>
@@ -69,7 +83,7 @@ describe('AngularMaterialTimepickerDirective', () =>
         fixture.detectChanges();
         const root = inputEl.nativeElement as HTMLElement;
         const parent = root.parentElement as HTMLDivElement;
-        const overlay = parent.querySelector(".amt-overlay") as HTMLDivElement;
+        const overlay = document.querySelector(".amt-overlay") as HTMLDivElement;
         overlay.click();
         tick(501);
         fixture.detectChanges();
